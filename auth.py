@@ -7,12 +7,19 @@ def get_credentials():
     password = getpass.getpass('Enter your password: ')
     return username, password
 
+def authenticate(username, password, pwdb):
+    if username in pwdb:
+        if password == pwdb[username]:
+            return True
+    return False
+
 def read_pwdb(pwdb_file):
     pwdb = pickle.load(pwdb_file)
     return pwdb
 
 def write_pwdb(pwdb, pwdb_file):
     pickle.dump(pwdb, pwdb_file)
+
 
 if __name__ == '__main__':
     DEFAULT_PWDB = 'pwdb.pkl'
@@ -29,4 +36,8 @@ if __name__ == '__main__':
     username, password = get_credentials()
     pwdb = read_pwdb(pwdb_file)
 
-    print(username, password)
+    if authenticate(username, password, pwdb):
+        print('Successfull authentication', username, password)
+    else:
+        print('User not known or password is wrong!')
+
