@@ -9,7 +9,7 @@ def get_credentials():
 
 def hash_string(inputstring):
     # hash the string
-    hashed_password = sum([ord(char) for char in inputstring]) 
+    hashed_password = sum(ord(char) for char in inputstring) 
     return hashed_password
     
 def authenticate(username, password, pwdb):
