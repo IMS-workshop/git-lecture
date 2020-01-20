@@ -5,8 +5,13 @@ import sys
 def get_credentials():
     username = input('Enter your username: ')
     password = getpass.getpass('Enter your password: ')
-    return username, password
+    return username, hash_string(password)
 
+def hash_string(inputstring):
+    # hash the string
+    hashed_password = sum([ord(char) for char in inputstring]) 
+    return hashed_password
+    
 def authenticate(username, password, pwdb):
     if username in pwdb:
         if password == pwdb[username]:
