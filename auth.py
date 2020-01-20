@@ -8,13 +8,10 @@ def get_credentials():
     return username, password
 
 def authenticate(username, password, pwdb):
-    auth = False
     if username in pwdb:
         if password == pwdb[username]:
-            auth = True
-
-    auth = False
-    return auth
+            return True
+    return False
 
 def read_pwdb(pwdb_file):
     pwdb = pickle.load(pwdb_file)
