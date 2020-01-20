@@ -1,6 +1,8 @@
+import getpass
+
 def get_credentials():
     username = input('Enter your username: ')
-    password = input('Enter your password: ')
+    password = getpass.getpass('Enter your password: ')
     return username, password
 
 if __name__ == '__main__':
